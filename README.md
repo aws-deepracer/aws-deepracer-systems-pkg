@@ -2,7 +2,7 @@
 
 ## Overview
 
-The DeepRacer Systems ROS package creates the *software_update_node, model_loader_node, otg_control_node, network_monitor_node* which ** are part of the core AWS DeepRacer application and will be launched from the deepracer_launcher. More details about the application and the components can be found [here](https://github.com/aws-racer/aws-deepracer-launcher).
+The DeepRacer Systems ROS package creates the *software_update_node, model_loader_node, otg_control_node, network_monitor_node* which are part of the core AWS DeepRacer application and will be launched from the deepracer_launcher. More details about the application and the components can be found [here](https://github.com/aws-racer/aws-deepracer-launcher).
 
 These nodes are responsible for managing some system level functionalities required in the DeepRacer application. 
 
