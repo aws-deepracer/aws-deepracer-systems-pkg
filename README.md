@@ -21,7 +21,7 @@ This node is responsible responsible to check for the micro-USB connection and e
 
 ### network_monitor_node
 
-This node is is responsible to monitor and manage network connection to the device. It provides services and functions to connect to WiFi based on the content of the WiFi configuration file read from usb, report the status of the connection attempt back in the device status file created on the USB when updating WiFi configuration, manage the status LED light to indicate the network connection status and broadcast the network connection status as a message.
+This node is is responsible to monitor and manage network connection to the device. It provides services and functions to connect to Wi-Fi based on the content of the Wi-Fi configuration file read from usb, report the status of the connection attempt back in the device status file created on the USB when updating Wi-Fi configuration, manage the status LED light to indicate the network connection status and broadcast the network connection status as a message.
 
 ## License
 
@@ -31,7 +31,7 @@ The source code is released under Apache 2.0 (https://aws.amazon.com/apache-2-0/
 
 ### Prerequisites
 
-The DeepRacer device comes with all the pre-requisite packages, build systems and libraries installed to build and run the deepracer_systems_pkg. More details about pre installed set of packages and libraries on the DeepRacer, and installing required build systems can be found in the [Getting Started](https://github.com/aws-racer/aws-deepracer-launcher/blob/main/getting-started.md) section of the AWS DeepRacer Opensource page.
+The DeepRacer device comes with all the pre-requisite packages and libraries installed to run the deepracer_systems_pkg. More details about pre installed set of packages and libraries on the DeepRacer, and installing required build systems can be found in the [Getting Started](https://github.com/aws-racer/aws-deepracer-launcher/blob/main/getting-started.md) section of the AWS DeepRacer Opensource page.
 
 The deepracer_systems_pkg specifically depends on the following ROS2 packages as build and execute dependencies:
 
@@ -71,7 +71,7 @@ Open up a terminal on the DeepRacer device and run the following commands as roo
 
 1. Build the deepracer_systems_pkg, status_led_pkg, usb_monitor_pkg and deepracer_interfaces_pkg:
 
-    cd ~/deepracer_ws && colcon build --packages-select deepracer_systems_pkg status_led_pkg usb_monitor_pkg deepracer_interfaces_pkg
+         cd ~/deepracer_ws && colcon build --packages-select deepracer_systems_pkg status_led_pkg usb_monitor_pkg deepracer_interfaces_pkg
 
 ## Usage
 
