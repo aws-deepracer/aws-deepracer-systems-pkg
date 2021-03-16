@@ -1,12 +1,12 @@
 - git:
-    uri: https://github.com/aws-racer/aws-deepracer-interfaces-pkg.git
+    uri: https://github.com/awsdeepracer/aws-deepracer-interfaces-pkg.git
     local-name: aws-deepracer-interfaces-pkg
     version: main
 - git:
-    uri: https://github.com/aws-racer/aws-deepracer-status-led-pkg.git
+    uri: https://github.com/awsdeepracer/aws-deepracer-status-led-pkg.git
     local-name: aws-deepracer-status-led-pkg
     version: main
 - git:
-    uri: https://github.com/aws-racer/aws-deepracer-usb-monitor-pkg.git
+    uri: https://github.com/awsdeepracer/aws-deepracer-usb-monitor-pkg.git
     local-name: aws-deepracer-usb-monitor-pkg
     version: main
