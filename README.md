@@ -71,7 +71,7 @@ Open up a terminal on the DeepRacer device and run the following commands as roo
 
 1. Build the deepracer_systems_pkg, status_led_pkg, usb_monitor_pkg and deepracer_interfaces_pkg:
 
-         cd ~/deepracer_ws/aws-deepracer-systems-pkg && colcon build --packages-select deepracer_systems_pkg status_led_pkg usb_monitor_pkg deepracer_interfaces_pkg
+        cd ~/deepracer_ws/aws-deepracer-systems-pkg && colcon build --packages-select deepracer_systems_pkg status_led_pkg usb_monitor_pkg deepracer_interfaces_pkg
 
 ## Usage
 
@@ -213,3 +213,6 @@ The  deepracer_systems_pkg_launch.py is also included in this package that gives
 |/usb_monitor_pkg/usb_file_system_subscribe|USBFileSystemSubscribeSrv|Client to USB File system subscription service to add  wifi-creds.txt file to watchlist and trigger notification if it finds it in the USB drive.|
 |/usb_monitor_pkg/usb_mount_point_manager|USBMountPointManagerSrv|Client to USB Mount point manager service to indicate that the usb_monitor_node can safely decrement the counter for the mount point once the action function for the for the WiFi configuration file being watched by network_monitor_node is succesfully executed.|
 
+## Resources
+
+* AWS DeepRacer Opensource getting started: [https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/getting-started.md](https://github.com/awsdeepracer/aws-deepracer-launcher/blob/main/getting-started.md)
