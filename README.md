@@ -1,53 +1,54 @@
-# DeepRacer Systems Package
+# AWS DeepRacer systems package
 
 ## Overview
 
-The DeepRacer Systems ROS package creates the *software_update_node, model_loader_node, otg_control_node, network_monitor_node* which are part of the core AWS DeepRacer application and will be launched from the deepracer_launcher. More details about the application and the components can be found [here](https://github.com/aws-deepracer/aws-deepracer-launcher).
+The AWS DeepRacer systems ROS package creates the `software_update_node`, `model_loader_node`, `otg_control_node`, and `network_monitor_node`, which are part of the core AWS DeepRacer application and launch from the `deepracer_launcher`. For more information about the application and the components, see the [aws-deepracer-launcher repository](https://github.com/aws-deepracer/aws-deepracer-launcher).
 
-These nodes are responsible for managing some system level functionalities required in the DeepRacer application. 
+These nodes are responsible for managing some system-level functionalities required in the AWS DeepRacer application. 
 
-### software_update_node
+### `software_update_node`
 
-This node is responsible for managing the update system for DeepRacer packages. It provides services and functions to
-check for software update, execute software update, provide status of the current software update state and installation state, install signed packages from USB drive.
+This node is responsible for managing the update system for AWS DeepRacer packages. It provides services and functions that
+check for software updates, execute software updates, provide the status of the current software update state and installation state, and install signed packages from a USB drive.
 
-### model_loader_node
+### `model_loader_node`
 
-This node is responsible for managing DeepRacer reinforcement learning models in the */opt/aws/deepracer/artifacts* folder on the DeepRacer device. It provides services and functions to load tar.gz files with model from usb, extract tar.gz files with model uploaded in the console, list models in /opt/aws/deepracer/artifacts folder, verify model readiness through checksum file check and delete models through console.
+This node is responsible for managing AWS DeepRacer reinforcement learning models in the `/opt/aws/deepracer/artifacts` directory on the AWS DeepRacer device. It provides services and functions that load .tar.gz files with models from USB, extract .tar.gz files with models uploaded in the console, list models in the `/opt/aws/deepracer/artifacts` directory, verify model readiness through a checksum file check, and delete models through the console.
 
-### otg_control_node
+### `otg_control_node`
 
-This node is responsible responsible to check for the micro-USB connection and enable/disable ethernet-over-USB feature whenever there is a connection change. It provides services and functions to execute scripts to initialize, enable, disable ethernet-over-USB feature and find out about current the micro-USB cable connection status.
+This node is responsible for checking for the micro-USB connection and enabling or disabling the ethernet-over-USB feature whenever there is a connection change. It provides services and functions that execute scripts to initialize, enable, and disable the ethernet-over-USB feature and detect the current micro-USB cable connection status.
 
-### network_monitor_node
+### `network_monitor_node`
 
-This node is is responsible to monitor and manage network connection to the device. It provides services and functions to connect to Wi-Fi based on the content of the Wi-Fi configuration file read from usb, report the status of the connection attempt back in the device status file created on the USB when updating Wi-Fi configuration, manage the status LED light to indicate the network connection status and broadcast the network connection status as a message.
+This node is responsible for monitoring and managing the network connection to the device. It provides services and functions that connect to Wi-Fi based on the content of the Wi-Fi configuration file read from USB, report the status of the connection attempt in the device status file created on the USB when updating the Wi-Fi configuration, manage the status LED light to indicate the network connection status, and broadcast the network connection status as a message.
 
 ## License
 
-The source code is released under Apache 2.0 (https://aws.amazon.com/apache-2-0/).
+The source code is released under [Apache 2.0](https://aws.amazon.com/apache-2-0/).
 
 ## Installation
+Follow these steps to install the AWS DeepRacer systems package.
 
 ### Prerequisites
 
-The DeepRacer device comes with all the pre-requisite packages and libraries installed to run the deepracer_systems_pkg. More details about pre installed set of packages and libraries on the DeepRacer, and installing required build systems can be found in the [Getting Started](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md) section of the AWS DeepRacer Opensource page.
+The AWS DeepRacer device comes with all the prerequisite packages and libraries installed to run the `deepracer_systems_pkg`. For more information about the preinstalled set of packages and libraries on the AWS DeepRacer and about installing the required build systems, see [Getting started with AWS DeepRacer OpenSource](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md).
 
-The deepracer_systems_pkg specifically depends on the following ROS2 packages as build and execute dependencies:
+The AWS `deepracer_systems_pkg` specifically depends on the following ROS 2 packages as build and run dependencies.
 
-1. *deepracer_interfaces_pkg* - This packages contains the custom message and service type definitions used across the AWS DeepRacer core application.
-1. *status_led_pkg* - The DeepRacer Status LED ROS package creates the *status_led_node* which ** is part of the core AWS DeepRacer application.
-1. *usb_monitor_pkg* - The DeepRacer USB Monitor ROS package creates the *usb_monitor_node* which ** is part of the core AWS DeepRacer application.
+1. `deepracer_interfaces_pkg`: This package contains the custom message and service type definitions used across the AWS DeepRacer core application.
+1. `status_led_pkg`: The AWS DeepRacer status LED ROS package creates the `status_led_node`, which is part of the core AWS DeepRacer application.
+1. `usb_monitor_pkg`: The AWS DeepRacer USB monitor ROS package creates the `usb_monitor_node` which is part of the core AWS DeepRacer application.
 
-## Downloading and Building
+## Downloading and building
 
-Open up a terminal on the DeepRacer device and run the following commands as root user.
+Open a terminal on the AWS DeepRacer device and run the following commands as the root user.
 
-1. Switch to root user before you source the ROS2 installation:
+1. Switch to the root user before you source the ROS 2 installation:
 
         sudo su
 
-1. Source the ROS2 Foxy setup bash script:
+1. Source the ROS 2 Foxy setup bash script:
 
         source /opt/ros/foxy/setup.bash 
 
@@ -60,7 +61,7 @@ Open up a terminal on the DeepRacer device and run the following commands as roo
         mkdir -p ~/deepracer_ws
         cd ~/deepracer_ws
 
-1. Clone the deepracer_systems_pkg on the DeepRacer device:
+1. Clone the `deepracer_systems_pkg` on the AWS DeepRacer device:
 
         git clone https://github.com/aws-deepracer/aws-deepracer-systems-pkg.git
 
@@ -69,27 +70,27 @@ Open up a terminal on the DeepRacer device and run the following commands as roo
         cd ~/deepracer_ws/aws-deepracer-systems-pkg
         rosws update
 
-1. Resolve the deepracer_systems_pkg dependencies:
+1. Resolve the `deepracer_systems_pkg` dependencies:
 
         cd ~/deepracer_ws/aws-deepracer-systems-pkg && rosdep install -i --from-path . --rosdistro foxy -y
 
-1. Build the deepracer_systems_pkg, status_led_pkg, usb_monitor_pkg and deepracer_interfaces_pkg:
+1. Build the `deepracer_systems_pkg`, `status_led_pkg`, `usb_monitor_pkg`, and `deepracer_interfaces_pkg`:
 
         cd ~/deepracer_ws/aws-deepracer-systems-pkg && colcon build --packages-select deepracer_systems_pkg status_led_pkg usb_monitor_pkg deepracer_interfaces_pkg
 
 ## Usage
 
-These nodes provide basic system level functionality for the AWS DeepRacer application to work. Although the nodes is built to work with the AWS DeepRacer application, it can be run independently for development/testing/debugging purposes.
+These nodes provide basic system-level functionality for the AWS DeepRacer application to work. Although the nodes are built to work with the AWS DeepRacer application, you can run them independently for development, testing, and debugging purposes.
 
 ### Run the node
 
-To launch the built nodes as root user on the DeepRacer device open up another terminal on the DeepRacer device and run the following commands as root user:
+To launch the built nodes as the root user on the AWS DeepRacer device, open another terminal on the AWS DeepRacer device and run the following commands as the root user.
 
-1. Switch to root user before you source the ROS2 installation:
+1. Switch to the root user before you source the ROS 2 installation:
 
         sudo su
 
-1. Source the ROS2 Foxy setup bash script:
+1. Source the ROS 2 Foxy setup bash script:
 
         source /opt/ros/foxy/setup.bash 
 
@@ -101,9 +102,9 @@ To launch the built nodes as root user on the DeepRacer device open up another t
 
         ros2 launch deepracer_systems_pkg deepracer_systems_pkg_launch.py
 
-## Launch Files
+## Launch files
 
-The  deepracer_systems_pkg_launch.py is also included in this package that gives an example of how to launch the nodes independently from the core application.
+The `deepracer_systems_pkg_launch.py`, included in this package, provides an example demonstrating how to launch the nodes independently from the core application.
 
     from launch import LaunchDescription
     from launch_ros.actions import Node
@@ -137,32 +138,32 @@ The  deepracer_systems_pkg_launch.py is also included in this package that gives
         ])
 
 
-## Node Details
+## Node details
 
 ### software_update_node
 
-#### Subscribed Topics
+#### Subscribed topics
 
-| Topic Name | Message Type | Description |
+| Topic name | Message type | Description |
 | ---------- | ------------ | ----------- |
-|/usb_monitor_pkg/usb_file_system_notification|USBFileSystemNotificationMsg|This message holds the file/folder details that is broadcasted, whenever a watched file is identified in the USB connected.|
-|/deepracer_systems_pkg/network_connection_status|NetworkConnectionStatus|This message with network connection status to indicate if the device is connected to the internet.|
+|/`usb_monitor_pkg`/`usb_file_system_notification`|`USBFileSystemNotificationMsg`|This message holds the file and folder details that are broadcasted whenever a watched file is identified in the USB connection.|
+|/`deepracer_systems_pkg`/`network_connection_status`|`NetworkConnectionStatus`|This message provides the network connection status to indicate if the device is connected to the internet.|
 
-#### Published Topics
+#### Published topics
 
-| Topic Name | Message Type | Description |
+| Topic name | Message type | Description |
 | ---------- | ------------ | ----------- |
-|/deepracer_systems_pkg/software_update_pct|SoftwareUpdatePctMsg|Publish a message with current software update percentage and status.|
+|/`deepracer_systems_pkg`/`software_update_pct`|`SoftwareUpdatePctMsg`|Publish a message with the current software update percentage and status.|
 
 
-#### Service Clients
+#### Service clients
 
-| Service Name | Service Type | Description |
+| Service name | Service type | Description |
 | ---------- | ------------ | ----------- |
-|/status_led_pkg/led_blink|SetStatusLedBlinkSrv|Client to the status LED blink service that is called to indicate progress of software update operation.|
-|/status_led_pkg/led_solid|SetStatusLedSolidSrv|Client to the status LED solid service that is called to indicate success/failure of software update operation.|
-|/usb_monitor_pkg/usb_file_system_subscribe|USBFileSystemSubscribeSrv|Client to USB File system subscription service to add  "update" folder to watchlist and trigger notification if it finds it in the USB drive.|
-|/usb_monitor_pkg/usb_mount_point_manager|USBMountPointManagerSrv|Client to USB Mount point manager service to indicate that the usb_monitor_node can safely decrement the counter for the mount point once the action function for the "update" folder file being watched by software_update_node is succesfully executed.|
+|/`status_led_pkg`/`led_blink`|`SetStatusLedBlinkSrv`|Client to the status LED blink service that is called to indicate the progress of the software update operation.|
+|/`status_led_pkg`/`led_solid`|`SetStatusLedSolidSrv`|Client to the status LED solid service that is called to indicate the success or failure of the software update operation.|
+|/`usb_monitor_pkg`/`usb_file_system_subscribe`|`USBFileSystemSubscribeSrv`|Client to the USB file system subscription service that adds an `update` folder to watchlist and notify if it finds it in the USB drive.|
+|/`usb_monitor_pkg`/`usb_mount_point_manager`|`USBMountPointManagerSrv`|Client to the USB mount point manager service to indicate that the `usb_monitor_node` can safely decrement the counter for the mount point once the action function for the `update` folder file being watched by `software_update_node` has run successfully.|
 
 
 #### Services
