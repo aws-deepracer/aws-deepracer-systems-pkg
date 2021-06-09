@@ -146,7 +146,7 @@ The `deepracer_systems_pkg_launch.py`, included in this package, provides an exa
 
 | Topic name | Message type | Description |
 | ---------- | ------------ | ----------- |
-|/`usb_monitor_pkg`/`usb_file_system_notification`|`USBFileSystemNotificationMsg`|This message holds the file and folder details that are broadcasted whenever a watched file is identified in the USB connection.|
+|/`usb_monitor_pkg`/`usb_file_system_notification`|`USBFileSystemNotificationMsg`|This message holds the file and directory details that are broadcasted whenever a watched file is identified in the USB connection.|
 |/`deepracer_systems_pkg`/`network_connection_status`|`NetworkConnectionStatus`|This message provides the network connection status to indicate if the device is connected to the internet.|
 
 #### Published topics
@@ -160,68 +160,68 @@ The `deepracer_systems_pkg_launch.py`, included in this package, provides an exa
 
 | Service name | Service type | Description |
 | ---------- | ------------ | ----------- |
-|/`status_led_pkg`/`led_blink`|`SetStatusLedBlinkSrv`|Client to the status LED blink service that is called to indicate the progress of the software update operation.|
-|/`status_led_pkg`/`led_solid`|`SetStatusLedSolidSrv`|Client to the status LED solid service that is called to indicate the success or failure of the software update operation.|
-|/`usb_monitor_pkg`/`usb_file_system_subscribe`|`USBFileSystemSubscribeSrv`|Client to the USB file system subscription service that adds an `update` folder to watchlist and notify if it finds it in the USB drive.|
+|/`status_led_pkg`/`led_blink`|`SetStatusLedBlinkSrv`|Client to the `status_led_blink` service that is called to indicate the progress of the software update operation.|
+|/`status_led_pkg`/`led_solid`|`SetStatusLedSolidSrv`|Client to the `status_led_solid` service that is called to indicate the success or failure of the software update operation.|
+|/`usb_monitor_pkg`/`usb_file_system_subscribe`|`USBFileSystemSubscribeSrv`|Client to the `usb_file_system_subscribe` service that adds an `update` directory to the watchlist and notifies if it finds it in the USB drive.|
 |/`usb_monitor_pkg`/`usb_mount_point_manager`|`USBMountPointManagerSrv`|Client to the USB mount point manager service to indicate that the `usb_monitor_node` can safely decrement the counter for the mount point once the action function for the `update` folder file being watched by `software_update_node` has run successfully.|
 
 
 #### Services
 
-| Service Name | Service Type | Description |
+| Service name | Service type | Description |
 | ---------- | ------------ | ----------- |
-|software_update_check|SoftwareUpdateCheckSrv|A service that is called to check if a software update is available for aws-deepracer-* packages.|
-|begin_update|BeginSoftwareUpdateSrv|A service that is called to execute the software update and install latest deepracer packages.|
-|software_update_state|SoftwareUpdateStateSrv|A service that is called to get the current software update state on the vehicle. Values include [ UPDATE_UNKNOWN, UP_TO_DATE, UPDATE_AVAILABLE, UPDATE_PENDING, UPDATE_IN_PROGRESS ].|
+|`software_update_check`|`SoftwareUpdateCheckSrv`|A service that is called to check if a software update is available for `aws-deepracer-*` packages.|
+|`begin_update`|`BeginSoftwareUpdateSrv`|A service that is called to execute the software update and install the latest AWS DeepRacer packages.|
+|`software_update_state`|`SoftwareUpdateStateSrv`|A service that is called to get the current software update state on the vehicle. Values include [ UPDATE_UNKNOWN, UP_TO_DATE, UPDATE_AVAILABLE, UPDATE_PENDING, UPDATE_IN_PROGRESS ].|
 
 ### model_loader_node
 
-#### Subscribed Topics
+#### Subscribed topics
 
-| Topic Name | Message Type | Description |
+| Topic name | Message type | Description |
 | ---------- | ------------ | ----------- |
-|/usb_monitor_pkg/usb_file_system_notification|USBFileSystemNotificationMsg|This message holds the file/folder details that is broadcasted, whenever a watched file is identified in the USB connected.|
+|/`usb_monitor_pkg`/`usb_file_system_notification`|`USBFileSystemNotificationMsg`|This message holds the file and directory details broadcasted whenever a watched file is identified on the USB connection.|
 
-#### Service Clients
+#### Service clients
 
-| Service Name | Service Type | Description |
+| Service name | Service type | Description |
 | ---------- | ------------ | ----------- |
-|/status_led_pkg/led_blink|SetStatusLedBlinkSrv|Client to the status LED blink service that is called to indicate progress of load model operation.|
-|/status_led_pkg/led_solid|SetStatusLedSolidSrv|Client to the status LED solid service that is called to indicate success/failure of load model operation.|
-|/usb_monitor_pkg/usb_file_system_subscribe|USBFileSystemSubscribeSrv|Client to USB File system subscription service to add  "models" folder to watchlist and trigger notification if it finds it in the USB drive.|
-|/usb_monitor_pkg/usb_mount_point_manager|USBMountPointManagerSrv|Client to USB Mount point manager service to indicate that the usb_monitor_node can safely decrement the counter for the mount point once the action function for the "models" folder file being watched by model_loader_node is succesfully executed.|
-|/model_optimizer_pkg/model_optimizer_server|ModelOptimizeSrv|Client to model optimizer service that is called to optimize the models that is loaded from the USB and create the intermediate representation of the models.|
+|/`status_led_pkg`/`led_blink`|`SetStatusLedBlinkSrv`|Client to the `status_led_blink` service that is called to indicate the progress of the load model operation.|
+|/`status_led_pkg`/`led_solid`|`SetStatusLedSolidSrv`|Client to the `status_led_solid` service that is called to indicate the success or failure of the load model operation.|
+|/`usb_monitor_pkg`/`usb_file_system_subscribe`|`USBFileSystemSubscribeSrv`|Client to the `usb_file_system_subscribe` service to add a "models" directory to the watchlist and notify if it finds it on the USB drive.|
+|/`usb_monitor_pkg`/`usb_mount_point_manager`|`USBMountPointManagerSrv`|Client to the usb_mount_point_manager service to indicate that the `usb_monitor_node` can safely decrement the counter for the mount point once the action function for the "models" directory file being watched by `model_loader_node` runs successfully.|
+|/`model_optimizer_pkg`/`model_optimizer_server`|`ModelOptimizeSrv`|Client to the model_optimizer_service that is called to optimize the model loaded from the USB and to create the intermediate representation of the models.|
 
 #### Services
 
-| Service Name | Service Type | Description |
+| Service name | Service type | Description |
 | ---------- | ------------ | ----------- |
-|verify_model_ready|VerifyModelReadySrv|A service that is called when a new model is loaded to verify if the model was extracted successfully.|
-|console_model_action|ConsoleModelActionSrv|A service that is called with actions to upload/delete models from device console. It supports actions to extract and copy a tar.gz file with model that was uploaded from the console or delete a model that is present in the /opt/aws/deepracer/artifacts folder.|
+|`verify_model_ready`|`VerifyModelReadySrv`|A service that is called when a new model is loaded to verify if the model was extracted successfully.|
+|`console_model_action`|`ConsoleModelActionSrv`|A service that is called with actions to upload or delete models from device console. It supports actions to extract and copy a .tar.gz file with a model uploaded from the console or to delete a model that is present in the /`opt`/`aws`/`deepracer`/`artifacts` directory.|
 
-### network_monitor_node
+### `network_monitor_node`
 
-#### Subscribed Topics
+#### Subscribed topics
 
-| Topic Name | Message Type | Description |
+| Topic name | Message type | Description |
 | ---------- | ------------ | ----------- |
-|/usb_monitor_pkg/usb_file_system_notification|USBFileSystemNotificationMsg|This message holds the file/folder details that is broadcasted, whenever a watched file is identified in the USB connected.|
+|/`usb_monitor_pkg`/`usb_file_system_notification`|`USBFileSystemNotificationMsg`|This message holds the file and directory details broadcasted whenever a watched file is identified on the USB connection.|
 
-#### Published Topics
+#### Published topics
 
-| Topic Name | Message Type | Description |
+| Topic name | Message type | Description |
 | ---------- | ------------ | ----------- |
-|/deepracer_systems_pkg/network_connection_status|NetworkConnectionStatus|Publish a message with network connection status to indicate if the device is connected to the internet.|
+|/`deepracer_systems_pkg`/`network_connection_status`|`NetworkConnectionStatus`|Publish a message with the network connection status to indicate if the device is connected to the internet.|
 
-#### Service Clients
+#### Service clients
 
-| Service Name | Service Type | Description |
+| Service name | Service type | Description |
 | ---------- | ------------ | ----------- |
-|/status_led_pkg/led_blink|SetStatusLedBlinkSrv|Client to the status LED blink service that is called to indicate progress of WiFi connection operation.|
-|/status_led_pkg/led_solid|SetStatusLedSolidSrv|Client to the status LED solid service that is called to indicate success/failure of WiFi connection operation.|
-|/usb_monitor_pkg/usb_file_system_subscribe|USBFileSystemSubscribeSrv|Client to USB File system subscription service to add  wifi-creds.txt file to watchlist and trigger notification if it finds it in the USB drive.|
-|/usb_monitor_pkg/usb_mount_point_manager|USBMountPointManagerSrv|Client to USB Mount point manager service to indicate that the usb_monitor_node can safely decrement the counter for the mount point once the action function for the for the WiFi configuration file being watched by network_monitor_node is succesfully executed.|
+|/`status_led_pkg`/`led_blink`|`SetStatusLedBlinkSrv`|Client to the `status_led_blink` service that is called to indicate the progress of the Wi-Fi connection operation.|
+|/`status_led_pkg`/`led_solid`|`SetStatusLedSolidSrv`|Client to the `status_led_solid` service that is called to indicate the success or failure of the Wi-Fi connection operation.|
+|/`usb_monitor_pkg`/`usb_file_system_subscribe`|`USBFileSystemSubscribeSrv`|Client to the `usb_file_system_subscribe` service to add  the `wifi-creds.txt` file to the watchlist and to notify if it finds it on the USB drive.|
+|/`usb_monitor_pkg`/`usb_mount_point_manager`|`USBMountPointManagerSrv`|Client to the `usb_mount_point_manager` service to indicate that the `usb_monitor_node` can safely decrement the counter for the mount point once the action function for the for the Wi-Fi configuration file being watched by `network_monitor_node` runs successfully.|
 
 ## Resources
 
-* AWS DeepRacer Opensource getting started: [https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md)
+* [Getting started with AWS DeepRacer OpenSource](https://github.com/aws-deepracer/aws-deepracer-launcher/blob/main/getting-started.md)
