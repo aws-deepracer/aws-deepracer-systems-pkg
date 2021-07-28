@@ -19,6 +19,16 @@ import grp
 import os
 from enum import Enum
 
+#########################################################################################
+# DeepRacer Systems Scripts Constants
+
+# Timer period (seconds) for the dependency function callback
+CHK_DEP_TIMER_PERIOD = 600
+
+RSYSLOG_CONFIG_FILE = "/etc/rsyslog.d/50-default.conf"
+RSYSLOG_RULE = "if ($programname == \"kernel\" and $msg contains \"uvcvideo: Buffer is NULL\") then stop\n"
+RSYSLOG_RESTART_CMD = "sudo service rsyslog restart"
+
 
 #########################################################################################
 # USBFileSystem services.
@@ -70,6 +80,9 @@ class LEDColor():
 # Common configuration.
 
 
+BASE_PATH = "/opt/aws/deepracer/"
+# Day 0 / Mandatory Software Update status
+SOFTWARE_UPDATE_STATUS_PATH = os.path.join(BASE_PATH, "software_update_status.json")
 TEMP_DIRECTORY = os.path.join(os.sep, "var", "tmp")
 KERNEL_CONFIG_DIRECTORY = os.path.join(os.sep, "sys", "kernel", "config")
 

@@ -27,7 +27,8 @@ setup(
               package_name + ".software_update_module",
               package_name + ".model_loader_module",
               package_name + ".otg_module",
-              package_name + ".network_monitor_module"],
+              package_name + ".network_monitor_module",
+              package_name + ".deepracer_systems_scripts_module"],
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -40,7 +41,7 @@ setup(
     maintainer_email='aws-deepracer@amazon.com',
     description=('This package contains the DeepRacer system level packages responsible '
                  'for software update system, managing reinforcement learning models, '
-                 'WiFi connection and ethernet over USB feature.'),
+                 'WiFi connection, ethernet over USB feature and running dependency script commands.'),
     license='Apache 2.0',
     tests_require=['pytest'],
     entry_points={
@@ -48,7 +49,8 @@ setup(
             'software_update_node = deepracer_systems_pkg.software_update_module.software_update_node:main',
             'model_loader_node = deepracer_systems_pkg.model_loader_module.model_loader_node:main',
             'otg_control_node = deepracer_systems_pkg.otg_module.otg_control_node:main',
-            'network_monitor_node = deepracer_systems_pkg.network_monitor_module.network_monitor_node:main'
+            'network_monitor_node = deepracer_systems_pkg.network_monitor_module.network_monitor_node:main',
+            'deepracer_systems_scripts_node = deepracer_systems_pkg.deepracer_systems_scripts_module.deepracer_systems_scripts_node:main'
         ],
     },
 )

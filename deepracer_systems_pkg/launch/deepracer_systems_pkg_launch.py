@@ -43,5 +43,11 @@ def generate_launch_description():
             namespace='deepracer_systems_pkg',
             executable='network_monitor_node',
             name='network_monitor_node'
+        ),
+        Node(
+            package='deepracer_systems_pkg',
+            namespace='deepracer_systems_pkg',
+            executable='deepracer_systems_scripts_node',
+            name='deepracer_systems_scripts_node'
         )
     ])

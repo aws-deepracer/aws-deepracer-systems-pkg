@@ -44,6 +44,7 @@ import time
 import glob
 import threading
 import apt
+import json
 import rclpy
 from rclpy.node import Node
 from rclpy.executors import MultiThreadedExecutor
@@ -603,6 +604,13 @@ class SoftwareUpdateNode(Node):
                 if self.verify_software_update():
                     self.get_logger().info("Software update verified")
                     installation_successful = True
+                    # Write to software update status as atleast one
+                    # update has completed successfully.
+                    with open(constants.SOFTWARE_UPDATE_STATUS_PATH, "w") \
+                         as software_update_status_file:
+                        software_update_status = {"update_completed": True}
+                        json.dump(software_update_status, software_update_status_file)
+                        self.get_logger().info("Written to software update status file.")
                     break
                 else:
                     self.get_logger().error("Software update could not be verified. "

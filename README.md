@@ -2,7 +2,7 @@
 
 ## Overview
 
-The AWS DeepRacer systems ROS package creates the `software_update_node`, `model_loader_node`, `otg_control_node`, and `network_monitor_node`, which are part of the core AWS DeepRacer application and launch from the `deepracer_launcher`. For more information about the application and the components, see the [aws-deepracer-launcher repository](https://github.com/aws-deepracer/aws-deepracer-launcher).
+The AWS DeepRacer systems ROS package creates the `software_update_node`, `model_loader_node`, `otg_control_node`, `network_monitor_node` and `deepracer_systems_scripts_node`, which are part of the core AWS DeepRacer application and launch from the `deepracer_launcher`. For more information about the application and the components, see the [aws-deepracer-launcher repository](https://github.com/aws-deepracer/aws-deepracer-launcher).
 
 These nodes are responsible for managing some system-level functionalities required in the AWS DeepRacer application. 
 
@@ -22,6 +22,11 @@ This node is responsible for checking for the micro-USB connection and enabling 
 ### `network_monitor_node`
 
 This node is responsible for monitoring and managing the network connection to the device. It provides services and functions that connect to Wi-Fi based on the content of the Wi-Fi configuration file read from USB, report the status of the connection attempt in the device status file created on the USB when updating the Wi-Fi configuration, manage the status LED light to indicate the network connection status, and broadcast the network connection status as a message.
+
+### `deepracer_systems_scripts_node`
+
+This node is responsible for running in background to verify and run dependency script commands in specific time intervals.
+
 
 ## License
 
@@ -134,6 +139,12 @@ The `deepracer_systems_pkg_launch.py`, included in this package, provides an exa
                 namespace='deepracer_systems_pkg',
                 executable='network_monitor_node',
                 name='network_monitor_node'
+            ),
+            Node(
+                package='deepracer_systems_pkg',
+                namespace='deepracer_systems_pkg',
+                executable='deepracer_systems_scripts_node',
+                name='deepracer_systems_scripts_node'
             )
         ])
 

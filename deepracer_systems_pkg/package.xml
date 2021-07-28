@@ -6,7 +6,7 @@
   <description>
     This package contains the DeepRacer system level packages responsible
     for software update system, managing reinforcement learning models,
-    WiFi connection and ethernet over USB feature.
+    WiFi connection, ethernet over USB feature and running dependency script commands.
   </description>
   <maintainer email="aws-deepracer@amazon.com">AWS DeepRacer</maintainer>
   <license>Apache 2.0</license>
