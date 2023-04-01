@@ -30,7 +30,7 @@ NETWORK_CONNECTION_STATUS_TOPIC_NAME = \
 #########################################################################################
 # Software Update manager configuration.
 
-ENABLE_PERIODIC_SOFTWARE_UPDATE = True
+ENABLE_PERIODIC_SOFTWARE_UPDATE = False
 SOFTWARE_UPDATE_PERIOD_IN_SECONDS = (60.0 * 15)
 MIN_TIME_BEFORE_REBOOT_IN_SECONDS = 10
 SOFTWARE_UPDATE_RETRY_SLEEP_IN_SECONDS = (30.0 * 15)
